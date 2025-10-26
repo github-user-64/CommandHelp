@@ -1,0 +1,12 @@
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\bin\Debug\CommandHelp.dll
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\bin\Debug\CommandHelp.pdb
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\obj\Debug\CommandHelp.csproj.AssemblyReference.cache
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\obj\Debug\CommandHelp.csproj.CoreCompileInputs.cache
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\obj\Debug\CommandHelp.dll
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp\CommandHelp\obj\Debug\CommandHelp.pdb
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\obj\Debug\CommandHelp.csproj.AssemblyReference.cache
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\obj\Debug\CommandHelp.csproj.CoreCompileInputs.cache
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\obj\Debug\CommandHelp.dll
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\obj\Debug\CommandHelp.pdb
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\bin\Debug\CommandHelp.dll
+F:\F_MY1\File\RJWJ\C#\Projects\CommandHelp\CommandHelp2\CommandHelp\bin\Debug\CommandHelp.pdb
