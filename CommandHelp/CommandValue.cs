@@ -22,6 +22,7 @@ namespace CommandHelp
 
     public abstract class CommandValue<T> : CommandValue
     {
+        public virtual string TypeName { get; } = null;
         private T _rValue = default;
 
 
@@ -54,7 +55,7 @@ namespace CommandHelp
             }
             catch (Exception ex)
             {
-                throw new Exceptions.CommandException(exceptionmessage: $"参数[{command}]类型不为<{typeof(T).Name}>", ex: ex);
+                throw new Exceptions.CommandException(exceptionmessage: $"参数[{command}]类型不为<{TypeName ?? typeof(T).Name}>", ex: ex);
             }
 
             return this;

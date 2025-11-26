@@ -62,7 +62,7 @@ namespace CommandHelp
             if (cmdList.Count > 0)
             {
                 //添加失败原因, 空指令为指令缺失, 否则解析失败
-                if (isEmpty) 
+                if (isEmpty)
                     ce = new CommandLackException(cmdIndex, command);
                 else
                     ce = new CommandParseException(cmdIndex, command);
