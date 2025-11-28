@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandPrintList.cs" />
     <Compile Include="CommandVal.cs" />
     <Compile Include="CommandeEnum.cs" />
     <Compile Include="CommandKeyVal.cs" />

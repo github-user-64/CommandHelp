@@ -5,6 +5,7 @@ namespace CommandHelp
     public class CommandObject
     {
         public virtual string Text { get; } = null;
+        public virtual string TipText { get; set; } = null;
         public List<CommandObject> SubCommand { get; } = new List<CommandObject>();
 
 
