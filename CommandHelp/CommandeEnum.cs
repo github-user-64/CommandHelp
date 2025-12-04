@@ -7,6 +7,7 @@ namespace CommandHelp
         private int _rValue;
         private readonly string[] _enums = null;
         public string[] Enums => _enums;
+        public virtual string[] TipTexts { get; set; } = null;
 
 
         public CommandeEnum(bool IsVariable, params string[] enums) : base(IsVariable)
