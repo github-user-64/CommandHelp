@@ -55,7 +55,7 @@ namespace CommandHelp
             }
             catch (Exception ex)
             {
-                throw new Exceptions.CommandException(exceptionmessage: $"参数[{command}]类型不为<{TypeName ?? typeof(T).Name}>", ex: ex);
+                throw new Exceptions.CommandException(exceptionmessage: $"参数[{command}]类型不为<{TypeName ?? typeof(T).Name}>:{ex.Message}", ex: ex);
             }
 
             return this;
