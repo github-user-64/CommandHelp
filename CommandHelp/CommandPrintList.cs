@@ -16,9 +16,6 @@ namespace CommandHelp
         /// <summary>
         /// 显示指令列表
         /// </summary>
-        /// <param name="cos"></param>
-        /// <param name="tip"></param>
-        /// <param name="print"></param>
         public CommandPrintList(List<CommandObject> cos, string tip = null, Action<string> print = null)
         {
             Cos = cos;
@@ -36,6 +33,23 @@ namespace CommandHelp
             {
                 if (i == this) return;
                 if (i == null) return;
+
+                if (i is CommandeEnum enu)
+                {
+                    foreach (string enui in enu.Enums)
+                    {
+                        if (s == null)
+                        {
+                            s = $"{enui}";
+                        }
+                        else
+                        {
+                            s += $", {enui}";
+                        }
+                    }
+
+                    return;
+                }
 
                 if (s == null)
                 {
