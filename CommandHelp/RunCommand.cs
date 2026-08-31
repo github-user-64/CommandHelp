@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 namespace CommandHelp
 {
-    public class RunCommand
+    /// <summary>
+    /// 运行指令
+    /// </summary>
+    public static class RunCommand
     {
         /// <summary>
         /// 解析并运行指令, 解析格式>解析>运行
         /// </summary>
-        /// <param name="command"></param>
-        /// <param name="cmdList"></param>
-        /// <returns></returns>
+        /// <returns>如果有异常则返回<see cref="CommandException"/></returns>
         public static CommandException ParseRun(string command, List<CommandObject> cmdList)
         {
             (List<CommandObject> cos, CommandException cex) v = ParseCommand.Parse(command, cmdList);

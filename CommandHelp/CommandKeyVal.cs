@@ -1,43 +1,39 @@
-﻿using System.Collections.Generic;
-
-namespace CommandHelp
+﻿namespace CommandHelp
 {
+    /// <summary>
+    /// 指令:指令匹配时返回值
+    /// </summary>
     public class CommandKeyVal : CommandValue<object>
     {
-        private object _val = null;
-
-
+        /// <summary/>
         public CommandKeyVal(string key, object val, bool isVariable = false) : base(isVariable, key)
         {
-            _val = val;
+            RetVal = val;
         }
 
-
-        public override object Run(ref int index, List<CommandObject> commandList)
-        {
-            return _val;
-        }
-
+        /// <inheritdoc/>
         public override CommandObject Parse(string command)
         {
             if (command == "" && IsVariable)
             {
                 IsDefault = true;
-                _val = GetDefault();
+                RetVal = GetDefault();
                 return this;
             }
 
             return Text == command ? this : null;
         }
 
+        /// <inheritdoc/>
         protected override object ArgConvertThrow(string arg)
         {
             throw new System.NotImplementedException();
         }
 
+        /// <inheritdoc/>
         protected override object GetDefault()
         {
-            return null;
+            return RetVal;
         }
     }
 }

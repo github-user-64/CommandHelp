@@ -4,44 +4,53 @@ using System.Collections.Generic;
 
 namespace CommandHelp
 {
+    /// <summary>
+    /// 指令:返回指定类型的值, 解析多个参数
+    /// </summary>
+    /// <typeparam name="T">指定类型</typeparam>
     public abstract class CommandValues<T> : CommandValue<T>
     {
-        private readonly int _argCount = 0;
-        public int ArgCount => _argCount;
+        /// <summary>
+        /// 参数数量
+        /// </summary>
+        public readonly int ArgCount;
         private string[] _args = null;
         private T[] _rValue = null;
 
 
+        /// <exception cref="ArgumentException"></exception>
         public CommandValues(int argCount, bool isVariable = false, string text = null) : base(isVariable, text)
         {
-            if (argCount < 1) throw new ArgumentException("参数不能小于1", nameof(argCount));
-            _argCount = argCount;
+            if (argCount < 1) throw new ArgumentException("参数数量不能小于1", nameof(argCount));
+            ArgCount = argCount;
         }
 
 
+        /// <inheritdoc/>
         public override object Run(ref int index, List<CommandObject> commandList)
         {
             return _rValue;
         }
 
+        /// <inheritdoc/>
         public override CommandObject Parse(string command)
         {
             if (_args == null) ParseFormat(command);
 
-            T[] value = new T[_argCount];
+            T[] value = new T[ArgCount];
 
             //参数正常时_args正常
             //异常时, 如果参数数量为0且该指令为可变参数时才会进来, 此时_args为null
             if (_args == null)
             {
                 IsDefault = true;
-                value = new T[_argCount];
-                for (int i = 0; i < _argCount; ++i) value[i] = GetDefault();
+                value = new T[ArgCount];
+                for (int i = 0; i < ArgCount; ++i) value[i] = GetDefault();
                 _rValue = value;
                 return this;
             }
 
-            for (int i = 0; i < _argCount; ++i)
+            for (int i = 0; i < ArgCount; ++i)
             {
                 try
                 {
@@ -58,6 +67,7 @@ namespace CommandHelp
             return this;
         }
 
+        /// <inheritdoc/>
         public override (string cmdParse, string cmd) ParseFormat(string command)
         {
             char key = ' ';
@@ -65,7 +75,7 @@ namespace CommandHelp
             //"v v v subCommamd", 获取"v v v"部分
 
             string cmdParse = command;
-            string[] vs = new string[_argCount];
+            string[] vs = new string[ArgCount];
 
             int i = 0;
             for (; i < vs.Length; ++i)
@@ -90,7 +100,7 @@ namespace CommandHelp
             }
 
             //缺少参数
-            if (i < _argCount)
+            if (i < ArgCount)
             {
                 //数量为0时
                 if (i == 0)

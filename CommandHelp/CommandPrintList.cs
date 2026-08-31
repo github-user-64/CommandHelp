@@ -4,25 +4,30 @@ using System.Collections.Generic;
 namespace CommandHelp
 {
     /// <summary>
-    /// 显示指令列表
+    /// 指令:显示指令列表
     /// </summary>
     public class CommandPrintList : CommandMethod
     {
+        /// <inheritdoc/>
         public override string Text => "?";
-        public List<CommandObject> Cos { get; protected set; } = null;
-        public Action<string> Print { get; protected set; } = null;
-        public string Tip { get; protected set; } = null;
-
         /// <summary>
-        /// 显示指令列表
+        /// 指令列表
         /// </summary>
+        public List<CommandObject> Cos { get; protected set; } = null;
+        /// <summary>
+        /// 输出位置
+        /// </summary>
+        public Action<string> Print { get; protected set; } = null;
+
+        /// <summary/>
         public CommandPrintList(List<CommandObject> cos, string tip = null, Action<string> print = null)
         {
             Cos = cos;
-            Tip = tip;
             Print = print;
+            TipText = tip;
         }
 
+        /// <inheritdoc/>
         public override object OnRuning(ref int index, List<CommandObject> commandList, object[] args)
         {
             base.OnRuning(ref index, commandList, args);
@@ -62,7 +67,7 @@ namespace CommandHelp
             });
 
             if (s == null) s = "no cmd";
-            if (Tip != null) s = $"{s}//{Tip}";
+            if (TipText != null) s = $"{s}//{TipText}";
             Print?.Invoke(s);
 
             return this;

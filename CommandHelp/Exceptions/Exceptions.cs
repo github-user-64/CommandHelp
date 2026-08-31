@@ -2,22 +2,25 @@
 
 namespace CommandHelp.Exceptions
 {
+    /// <summary>
+    /// 指令异常
+    /// </summary>
     public class CommandException : Exception
     {
+        /// <summary/>
         public CommandException(int line = -1, string exceptionCommand = null, string exceptionmessage = null, Exception ex = null) : base(ex?.Message, ex)
         {
-            _line = line;
-            _exceptionCommand = exceptionCommand;
-            _exceptionMessage = exceptionmessage;
+            Line = line;
+            ExceptionCommand = exceptionCommand;
+            ExceptionMessage = exceptionmessage;
         }
 
-
-        protected int _line = -1;
-        public int Line => _line;
-        protected string _exceptionCommand = null;
-        public string ExceptionCommand => _exceptionCommand;
-        protected string _exceptionMessage = null;
-        public string ExceptionMessage => _exceptionMessage;
+        /// <summary>异常位置</summary>
+        public int Line { get; protected set; } = -1;
+        /// <summary>异常指令</summary>
+        public string ExceptionCommand { get; protected set; } = null;
+        /// <summary>异常信息</summary>
+        public string ExceptionMessage { get; protected set; } = null;
     }
 
     /// <summary>
@@ -25,6 +28,7 @@ namespace CommandHelp.Exceptions
     /// </summary>
     public class CommandLackException : CommandException
     {
+        /// <summary/>
         public CommandLackException(int line = -1, string exceptionCommand = null, string exceptionmessage = null, Exception ex = null)
             : base(line, exceptionCommand, exceptionmessage, ex)
         {
@@ -37,6 +41,7 @@ namespace CommandHelp.Exceptions
     /// </summary>
     public class CommandParseException : CommandException
     {
+        /// <summary/>
         public CommandParseException(int line = -1, string exceptionCommand = null, string exceptionmessage = null, Exception ex = null)
             : base(line, exceptionCommand, exceptionmessage, ex)
         {

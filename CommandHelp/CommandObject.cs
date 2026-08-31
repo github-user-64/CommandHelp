@@ -2,45 +2,54 @@
 
 namespace CommandHelp
 {
+    /// <summary>
+    /// 指令对象
+    /// </summary>
     public class CommandObject
     {
+        /// <summary>
+        /// 指令文本
+        /// </summary>
         public virtual string Text { get; } = null;
+        /// <summary>
+        /// 提示文本
+        /// </summary>
         public virtual string TipText { get; set; } = null;
+        /// <summary>
+        /// 子命令
+        /// </summary>
         public List<CommandObject> SubCommand { get; } = new List<CommandObject>();
 
-
+        /// <summary/>
         public CommandObject(string texe = null)
         {
             Text = texe;
         }
 
-
         /// <summary>
-        /// 
+        /// 运行指令
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">当前指令下标</param>
         /// <param name="commandList">解析后的指令对象</param>
-        /// <returns></returns>
         public virtual object Run(ref int index, List<CommandObject> commandList)
         {
             return null;
         }
 
         /// <summary>
-        /// 解析一句指令, 返回解析成功的对象
+        /// 解析一个指令, 返回解析成功的对象, 失败返回null
         /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
+        /// <param name="command">一个指令</param>
         public virtual CommandObject Parse(string command)
         {
             return command == Text ? this : null;
         }
 
         /// <summary>
-        /// 解析一段指令, 按格式分出属于该指令的部分和不属于的部分, 返回解析成功部分和未解析部分
+        /// 解析一段指令, 按格式分出属于该指令的部分和不属于的部分, 返回解析成功部分和未解析部分, 解析失败cmdParse为null
         /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
+        /// <param name="command">一段指令</param>
+        /// <returns>解析成功部分和未解析部分</returns>
         public virtual (string cmdParse, string cmd) ParseFormat(string command)
         {
             if (command == null) return (null, command);
@@ -53,7 +62,7 @@ namespace CommandHelp
             //清空开头空格
             command = command.TrimStart(key);
 
-            if (command.Length == 0) return (null, old);
+            if (command.Length < 1) return (null, old);
 
             //获取"head"之后空格位置
             int index = command.IndexOf(key);

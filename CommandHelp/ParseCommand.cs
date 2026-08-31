@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 namespace CommandHelp
 {
-    public class ParseCommand
+    /// <summary>
+    /// 解析指令
+    /// </summary>
+    public static class ParseCommand
     {
         /// <summary>
         /// 返回解析成功部分的指令对象和指令异常
         /// </summary>
-        /// <param name="command"></param>
-        /// <param name="cmdList"></param>
-        /// <returns></returns>
         public static (List<CommandObject> cos, CommandException cex) Parse(string command, List<CommandObject> cmdList)
         {
             return parse(command, 0, cmdList, new List<CommandObject>());
         }
-
+        
         private static (List<CommandObject> cos, CommandException cex) parse(string command, int cmdIndex, List<CommandObject> cmdList, List<CommandObject> parseList)
         {
             //if (command == null) return (parseList, null);
